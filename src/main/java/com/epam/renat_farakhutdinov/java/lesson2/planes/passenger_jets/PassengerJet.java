@@ -1,5 +1,6 @@
 package com.epam.renat_farakhutdinov.java.lesson2.planes.passenger_jets;
 
+import com.epam.renat_farakhutdinov.java.lesson2.exceptions.InvalidPlainCharacteristicException;
 import com.epam.renat_farakhutdinov.java.lesson2.planes.Plane;
 import com.epam.renat_farakhutdinov.java.lesson2.planes.PlaneBrand;
 import com.epam.renat_farakhutdinov.java.lesson2.planes.PlaneType;
@@ -26,7 +27,23 @@ public class PassengerJet implements Plane {
 
     public PassengerJet(int id, PlaneBrand producer, String code, double practicalCapacity, int practicalRange
             , int operatingSpeed, int serviceCeiling, int seatingCapacityInEconomyClass
-            , int seatingCapacityInBusinessClass, double revenueLoad) {
+            , int seatingCapacityInBusinessClass, double revenueLoad) throws InvalidPlainCharacteristicException {
+
+        if (practicalCapacity < 0 || practicalCapacity > 600000) {
+            throw new InvalidPlainCharacteristicException(String.format("Invalid \"Practical Capacity\" " +
+                    "parameter for plain with id = %d", id));
+        }
+
+        if (seatingCapacityInEconomyClass < 0 || seatingCapacityInEconomyClass > 800) {
+            throw new InvalidPlainCharacteristicException(String.format("Invalid \"Seating Capacity In Economy" +
+                    " Class\" parameter for plain with id = %d", id));
+        }
+
+        if (seatingCapacityInBusinessClass < 0 || seatingCapacityInBusinessClass > 800) {
+            throw new InvalidPlainCharacteristicException(String.format("Invalid \"Seating Capacity In Business" +
+                    " Class\" parameter for plain with id = %d", id));
+        }
+
         this.id = id;
         this.producer = producer;
         this.code = code;
@@ -37,19 +54,6 @@ public class PassengerJet implements Plane {
         this.seatingCapacityInEconomyClass = seatingCapacityInEconomyClass;
         this.seatingCapacityInBusinessClass = seatingCapacityInBusinessClass;
         this.revenueLoad = revenueLoad;
-    }
-
-    public PassengerJet(int id, PlaneBrand producer, String code) {
-        this.id = id;
-        this.producer = producer;
-        this.code = code;
-        this.practicalCapacity = 0;
-        this.practicalRange = 0;
-        this.operatingSpeed = 0;
-        this.serviceCeiling = 0;
-        this.seatingCapacityInEconomyClass = 0;
-        this.seatingCapacityInBusinessClass = 0;
-        this.revenueLoad = 0;
     }
 
     public int getSeatingCapacityInEconomyClass() {

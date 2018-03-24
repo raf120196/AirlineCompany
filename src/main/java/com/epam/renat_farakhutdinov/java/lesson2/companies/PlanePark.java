@@ -1,5 +1,7 @@
 package com.epam.renat_farakhutdinov.java.lesson2.companies;
 
+import com.epam.renat_farakhutdinov.java.lesson2.utils.MyList;
+
 import java.io.Serializable;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;

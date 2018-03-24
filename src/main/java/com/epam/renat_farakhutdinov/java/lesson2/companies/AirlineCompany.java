@@ -1,5 +1,7 @@
 package com.epam.renat_farakhutdinov.java.lesson2.companies;
 
+import com.epam.renat_farakhutdinov.java.lesson2.exceptions.PlainIsNotExistException;
+import com.epam.renat_farakhutdinov.java.lesson2.exceptions.PlaneAlreadyExistException;
 import com.epam.renat_farakhutdinov.java.lesson2.planes.Plane;
 import com.epam.renat_farakhutdinov.java.lesson2.planes.passenger_jets.PassengerJet;
 
@@ -13,12 +15,20 @@ public class AirlineCompany {
         this.airpark = new PlanePark<Plane>();
     }
 
-    public void addPlane(Plane plane) {
-        airpark.add(plane);
+    public void addPlane(Plane plane) throws PlaneAlreadyExistException {
+        if (plane == null || getPlaneById(plane.getID()) != null) {
+            throw new PlaneAlreadyExistException("Plane is null or already exist in company!");
+        } else {
+            airpark.add(plane);
+        }
     }
 
-    public void removePlane(Plane plane) {
-        airpark.remove(plane);
+    public void removePlane(Plane plane) throws PlainIsNotExistException {
+        if (plane == null || getPlaneById(plane.getID()) == null) {
+            throw new PlainIsNotExistException("Plane is null or isn't exist in company!");
+        } else {
+            airpark.remove(plane);
+        }
     }
 
     public PlanePark<Plane> getPark() {
@@ -81,5 +91,15 @@ public class AirlineCompany {
         }
 
         return result;
+    }
+
+    public Plane getPlaneById(int id) {
+        for (Plane plane : airpark) {
+            if (plane.getID() == id) {
+                return plane;
+            }
+        }
+
+        return null;
     }
 }

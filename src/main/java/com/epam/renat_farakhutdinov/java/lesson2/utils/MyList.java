@@ -1,4 +1,4 @@
-package com.epam.renat_farakhutdinov.java.lesson2.companies;
+package com.epam.renat_farakhutdinov.java.lesson2.utils;
 
 import java.util.Iterator;
 

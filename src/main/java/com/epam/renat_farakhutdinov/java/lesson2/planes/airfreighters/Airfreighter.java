@@ -1,5 +1,6 @@
 package com.epam.renat_farakhutdinov.java.lesson2.planes.airfreighters;
 
+import com.epam.renat_farakhutdinov.java.lesson2.exceptions.InvalidPlainCharacteristicException;
 import com.epam.renat_farakhutdinov.java.lesson2.planes.Plane;
 import com.epam.renat_farakhutdinov.java.lesson2.planes.PlaneBrand;
 import com.epam.renat_farakhutdinov.java.lesson2.planes.PlaneType;
@@ -24,7 +25,13 @@ public class Airfreighter implements Plane {
     }
 
     public Airfreighter(int id, PlaneBrand producer, String code, double practicalCapacity, int practicalRange
-            , int operatingSpeed, int serviceCeiling, double sizeOfFreightArea, double activeLoad) {
+            , int operatingSpeed, int serviceCeiling, double sizeOfFreightArea, double activeLoad) throws InvalidPlainCharacteristicException {
+
+        if (practicalCapacity < 0 || practicalCapacity > 600000) {
+            throw new InvalidPlainCharacteristicException(String.format("Invalid \"Practical Capacity\" " +
+                    "parameter for plain with id = %d", id));
+        }
+
         this.id = id;
         this.producer = producer;
         this.code = code;
@@ -34,18 +41,6 @@ public class Airfreighter implements Plane {
         this.serviceCeiling = serviceCeiling;
         this.sizeOfFreightArea = sizeOfFreightArea;
         this.activeLoad = activeLoad;
-    }
-
-    public Airfreighter(int id, PlaneBrand producer, String code) {
-        this.id = id;
-        this.producer = producer;
-        this.code = code;
-        this.practicalCapacity = 0;
-        this.practicalRange = 0;
-        this.operatingSpeed = 0;
-        this.serviceCeiling = 0;
-        this.sizeOfFreightArea = 0;
-        this.activeLoad = 0;
     }
 
     @Override
