@@ -5,14 +5,17 @@ import com.epam.renat_farakhutdinov.java.lesson2.exceptions.PlaneAlreadyExistExc
 import com.epam.renat_farakhutdinov.java.lesson2.planes.Plane;
 import com.epam.renat_farakhutdinov.java.lesson2.planes.passenger_jets.PassengerJet;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Created by Renat Farakhutdinov on 25.02.2018.
  */
 public class AirlineCompany {
-    private PlanePark<Plane> airpark;
+    private Set<Plane> airpark;
 
     public AirlineCompany() {
-        this.airpark = new PlanePark<Plane>();
+        this.airpark = new HashSet<Plane>();
     }
 
     public void addPlane(Plane plane) throws PlaneAlreadyExistException {
@@ -31,7 +34,7 @@ public class AirlineCompany {
         }
     }
 
-    public PlanePark<Plane> getPark() {
+    public Set<Plane> getPark() {
         return airpark;
     }
 
@@ -57,8 +60,8 @@ public class AirlineCompany {
         return sum;
     }
 
-    public PlanePark<Plane> getPlanesByCapacity(double lowerBound, double upperBound) {
-        PlanePark<Plane> result = new PlanePark<Plane>();
+    public Set<Plane> getPlanesByCapacity(double lowerBound, double upperBound) {
+        Set<Plane> result = new HashSet<Plane>();
 
         for (Plane plane : airpark) {
             if (plane.getPracticalRange() >= lowerBound && plane.getPracticalRange() <= upperBound) {
@@ -69,8 +72,8 @@ public class AirlineCompany {
         return result;
     }
 
-    public PlanePark<Plane> getPlanesBySpeed(double lowerBound, double upperBound) {
-        PlanePark<Plane> result = new PlanePark<Plane>();
+    public Set<Plane> getPlanesBySpeed(double lowerBound, double upperBound) {
+        Set<Plane> result = new HashSet<Plane>();
 
         for (Plane plane : airpark) {
             if (plane.getOperatingSpeed() >= lowerBound && plane.getOperatingSpeed() <= upperBound) {
@@ -81,8 +84,8 @@ public class AirlineCompany {
         return result;
     }
 
-    public PlanePark<Plane> getPlanesByRange(double lowerBound, double upperBound) {
-        PlanePark<Plane> result = new PlanePark<Plane>();
+    public Set<Plane> getPlanesByRange(double lowerBound, double upperBound) {
+        Set<Plane> result = new HashSet<Plane>();
 
         for (Plane plane : airpark) {
             if (plane.getPracticalRange() >= lowerBound && plane.getPracticalRange() <= upperBound) {
