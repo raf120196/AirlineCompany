@@ -141,7 +141,8 @@ public class PassengerJet implements Plane {
     }
 
     public String getPlaneName() {
-        return String.valueOf(producer.getPlaneName() + "-" + code);
+        StringBuilder planeName = producer == null ? new StringBuilder() : new StringBuilder(producer.getPlaneName()).append('-');
+        return String.valueOf(planeName + code);
     }
 
     @Override

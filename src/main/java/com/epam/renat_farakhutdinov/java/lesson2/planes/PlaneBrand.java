@@ -18,6 +18,9 @@ public enum PlaneBrand {
 
     private String planeName, producer, country;
 
+    PlaneBrand() {
+    }
+
     PlaneBrand(String planeName, String producer, String country) {
         this.planeName = planeName;
         this.producer = producer;
@@ -34,5 +37,15 @@ public enum PlaneBrand {
 
     public String getCountry() {
         return country;
+    }
+
+    public static PlaneBrand getPlaneBrandByPlaneName(String planeName) {
+        for (PlaneBrand planeBrand : PlaneBrand.values()) {
+            if (planeBrand.getPlaneName().equals(planeName)) {
+                return planeBrand;
+            }
+        }
+
+        return null;
     }
 }

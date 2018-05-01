@@ -12,10 +12,18 @@ import java.util.Set;
  * Created by Renat Farakhutdinov on 25.02.2018.
  */
 public class AirlineCompany {
-    private Set<Plane> airpark;
+    private Set<Plane> airpark = new HashSet<>();
 
     public AirlineCompany() {
         this.airpark = new HashSet<Plane>();
+    }
+
+    public Set<Plane> getAirpark() {
+        return airpark;
+    }
+
+    public void setAirpark(Set<Plane> airpark) {
+        this.airpark = airpark;
     }
 
     public void addPlane(Plane plane) throws PlaneAlreadyExistException {
@@ -104,5 +112,10 @@ public class AirlineCompany {
         }
 
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return "AirlineCompany {" + "airpark=" + airpark + '}';
     }
 }

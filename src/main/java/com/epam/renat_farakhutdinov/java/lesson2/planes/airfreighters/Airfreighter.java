@@ -9,7 +9,7 @@ import com.epam.renat_farakhutdinov.java.lesson2.planes.PlaneType;
  * Created by Renat Farakhutdinov on 24.02.2018.
  */
 public class Airfreighter implements Plane {
-    private static PlaneType planeType = PlaneType.PASSENGER;
+    private static PlaneType planeType = PlaneType.AIRFREIGHTER;
 
     private int id;
     private PlaneBrand producer;

@@ -8,15 +8,19 @@ import com.epam.renat_farakhutdinov.java.lesson2.planes.Plane;
 import com.epam.renat_farakhutdinov.java.lesson2.planes.PlaneBrand;
 import com.epam.renat_farakhutdinov.java.lesson2.planes.airfreighters.Airfreighter;
 import com.epam.renat_farakhutdinov.java.lesson2.planes.passenger_jets.PassengerJet;
+import com.epam.renat_farakhutdinov.java.lesson2.serialisation.SerializationHelper;
+import com.epam.renat_farakhutdinov.java.lesson2.xmlhelper.XMLReaderHelper;
 
 /**
  * Created by Renat Farakhutdinov on 25.02.2018.
  */
 public class Solution {
+    private static SerializationHelper xmlConverter = SerializationHelper.getInstance();
+
     public static void main(String[] args) {
         AirlineCompany myCompany = new AirlineCompany();
 
-        Plane boeing747 = createPassengerJet(1, PlaneBrand.BOEING, "747", 333400, 14205, 988, 13700, 490, 452, 76800);
+        PassengerJet boeing747 = createPassengerJet(1, PlaneBrand.BOEING, "747", 333400, 14205, 988, 13700, 490, 452, 76800);
         Plane airbusA380 = createPassengerJet(2, PlaneBrand.AIRBUS, "A380", 560000, 15000, 1020, 13100, 700, 525, 83100);
         Plane superjetSSJ95 = createPassengerJet(3, PlaneBrand.SUPERJET, "SSJ-95", 42500, 3050, 860, 12200, 98, 0, 12250);
         Plane tu154 = createPassengerJet(4, PlaneBrand.TU, "154", 98000, 2780, 950, 12100, 164, 131, 18000);
@@ -57,6 +61,24 @@ public class Solution {
 
         System.out.println("\nFull capability: " + myCompany.getFullCapacity());
         System.out.println("Full seating capability: " + myCompany.getFullSeatingCapacity());
+
+        System.out.println("\nSerialization demonstration:");
+        xmlConverter.serializeAirlineCompany(myCompany, "airline_company.xml");
+        System.out.println();
+        xmlConverter.deserializeAirlineCompany("airline_company.xml");
+
+        System.out.println("\nTask 8 demonstration:");
+        try {
+            Plane newFirstPlane = XMLReaderHelper.getNewPlane("plane1.xml");
+            System.out.println("First:");
+            System.out.println(newFirstPlane.toString());
+
+            Plane newSecondPlane = XMLReaderHelper.getNewPlane("plane2.xml");
+            System.out.println("Second:");
+            System.out.println(newSecondPlane.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static PassengerJet createPassengerJet(int id, PlaneBrand producer, String code, double practicalCapacity, int practicalRange
