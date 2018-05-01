@@ -1,0 +1,16 @@
+<plane>
+	<name>Ту-134</name>
+	<type>PassengerJet</type>
+    <UID>47512</UID>
+	<parameters>
+		<producer>Ту</producer>
+		<code>134</code>
+		<practical_capacity>100000.0</practical_capacity>
+		<practical_range>2800</practical_range>
+		<operating_speed>950</operating_speed>
+		<service_ceiling>12100</service_ceiling>
+		<seating_capacity_in_economy_class>164</seating_capacity_in_economy_class>
+		<seating_capacity_in_business_class>131</seating_capacity_in_business_class>
+		<revenue_load>18000.0</revenue_load>
+	</parameters>
+</plane>

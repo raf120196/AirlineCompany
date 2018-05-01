@@ -1,0 +1,15 @@
+<plane>
+	<name>Ан-16</name>
+	<type>Airfreighter</type>
+	<UID>85412</UID>
+	<parameters>
+		<producer>Ан</producer>
+		<code>16</code>
+		<practical_capacity>60000.0</practical_capacity>
+		<practical_range>6000</practical_range>
+		<operating_speed>800</operating_speed>
+		<service_ceiling>10000</service_ceiling>
+		<size_of_freight_area>330.0</size_of_freight_area>
+		<active_load>17000.0</active_load>
+	</parameters>
+</plane>
